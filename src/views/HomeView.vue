@@ -44,10 +44,6 @@ setTimeout(() => {
       >
         <p v-html="text"></p>
       </Motion>
-      <Motion class="text-9xl main-text text-center">
-        VIKRI <br />
-        PERMANA
-      </Motion>
     </Presence>
 
     <TheWelcome v-if="textFinished"></TheWelcome>

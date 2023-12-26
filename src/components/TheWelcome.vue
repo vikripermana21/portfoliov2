@@ -43,7 +43,7 @@ onkeydown = (e) => {
       :transition="{ duration: 1 }"
     >
       <p
-        class="text-[10rem] main-text leading-none my-5 text-white text-center bg-clip-text text-transparent bg-gradient-to-br from-[#9B5DE5] to-[#FEB240]"
+        class="text-[10rem] main-text leading-none my-5 text-center bg-clip-text text-transparent bg-gradient-to-br from-[#9B5DE5] to-[#FEB240]"
       >
         VIKRI <br />
         PERMANA
