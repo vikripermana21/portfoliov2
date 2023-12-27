@@ -1,0 +1,80 @@
+<script setup>
+import AnimatedButton from "@/components/AnimatedButton.vue";
+import { animate } from "motion";
+import { onMounted } from "vue";
+
+onMounted(() => {
+  animate(
+    "hr",
+    { opacity: [0, 1], x: [-100, 0] },
+    { easing: "ease-in-out", duration: 1 }
+  );
+  animate(
+    ".title-text",
+    { opacity: [0, 1], x: [100, 0] },
+    { duration: 1, easing: "ease-in-out" }
+  );
+  animate(
+    ".main-text",
+    { opacity: [0, 1], y: [100, 0] },
+    { duration: 1, easing: "ease-in-out" }
+  );
+  animate(
+    ".construct",
+    { opacity: [0, 1] },
+    { duration: 1, delay: 1, easing: "ease-in-out" }
+  );
+  animate(
+    ".cta",
+    { opacity: [0, 1], y: [100, 0] },
+    { delay: 1, duration: 0.5, easing: "ease-in-out" }
+  );
+});
+</script>
+
+<template>
+  <div
+    class="h-screen w-screen overflow-hidden bg-[#FEB240] flex flex-col relative"
+  >
+    <div class="flex items-center p-12">
+      <hr class="w-44 h-1 border-none bg-white" />
+      <h1 class="text-white text-6xl ml-5 title-text">PROJECTS</h1>
+    </div>
+
+    <div class="flex w-full h-full items-center flex-col">
+      <img
+        src="../assets/noto_construction.png"
+        class="mt-32 construct"
+        alt=""
+      />
+      <p class="text-white text-5xl mt-24 description main-text">
+        SOME WORK IS UNDER MAINTENANCE / ON PROGRESS
+      </p>
+    </div>
+
+    <div class="flex w-full justify-between p-12 absolute bottom-0 cta">
+      <AnimatedButton
+        type="back"
+        to="ABOUT ME"
+        link="/about"
+        class="text-[#FEB240]"
+      ></AnimatedButton>
+      <AnimatedButton
+        type="next"
+        to="CONTACTS"
+        link="/contacts"
+        class="text-[#FEB240]"
+      ></AnimatedButton>
+    </div>
+  </div>
+</template>
+
+<style>
+@media (min-width: 1024px) {
+  .about {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+}
+</style>

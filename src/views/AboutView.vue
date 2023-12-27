@@ -1,10 +1,7 @@
 <script setup>
+import AnimatedButton from "@/components/AnimatedButton.vue";
 import { animate } from "motion";
-import { onMounted, ref } from "vue";
-import { useRouter } from "vue-router";
-
-const router = useRouter();
-const hoverButton = ref("");
+import { onMounted } from "vue";
 
 onMounted(() => {
   animate(
@@ -38,35 +35,6 @@ onMounted(() => {
     { delay: 1, duration: 0.5, easing: "ease-in-out" }
   );
 });
-
-const animateIn = (name) => {
-  hoverButton.value = name;
-  animate(
-    `.span-${name}`,
-    {
-      height: "150%",
-      width: "200%",
-    },
-    {
-      width: { delay: 0.3 },
-    }
-  );
-  animate(`.text-${name}`, { opacity: [0, 1] }, { delay: 0.5, duration: 0.5 });
-};
-const animateOut = (name) => {
-  animate(
-    `.span-${name}`,
-    {
-      height: "100%",
-      width: "4px",
-    },
-    {
-      height: { delay: 0.3 },
-    }
-  );
-  animate(`.text-${name}`, { opacity: 0 }, { delay: 0.5, duration: 0.5 });
-  hoverButton.value = "";
-};
 </script>
 
 <template>
@@ -133,41 +101,18 @@ const animateOut = (name) => {
         </div>
       </div>
       <div class="flex w-full justify-between p-12 absolute bottom-0 cta">
-        <div
-          class="flex items-center cursor-pointer relative"
-          @mouseenter="animateIn('back')"
-          @mouseleave="animateOut('back')"
-          @click="router.push('/main-menu')"
-        >
-          <div
-            class="w-1 border-none bg-white h-full absolute flex justify-center span-back items-center"
-          >
-            <p
-              class="text-back text-[#F15BB5] text-3xl"
-              v-show="hoverButton == 'back'"
-            >
-              MAIN MENU
-            </p>
-          </div>
-          <p class="text-white text-3xl ml-5">BACK</p>
-        </div>
-        <div
-          class="flex items-center cursor-pointer relative"
-          @mouseenter="animateIn('next')"
-          @mouseleave="animateOut('next')"
-        >
-          <div
-            class="w-1 border-none bg-white h-full absolute flex justify-center span-next items-center right-0"
-          >
-            <p
-              class="text-next text-[#F15BB5] text-3xl"
-              v-show="hoverButton == 'next'"
-            >
-              PROJECTS
-            </p>
-          </div>
-          <p class="text-white text-3xl mr-5">NEXT</p>
-        </div>
+        <AnimatedButton
+          type="back"
+          to="MAIN MENU"
+          link="/main-menu"
+          class="text-[#F15BB5]"
+        ></AnimatedButton>
+        <AnimatedButton
+          type="next"
+          to="PROJECTS"
+          link="/projects"
+          class="text-[#F15BB5]"
+        ></AnimatedButton>
       </div>
     </div>
   </div>
