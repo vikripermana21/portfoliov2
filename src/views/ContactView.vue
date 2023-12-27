@@ -1,7 +1,46 @@
 <script setup>
 import AnimatedButton from "@/components/AnimatedButton.vue";
+import ContactItem from "@/components/ContactItem.vue";
 import { animate } from "motion";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
+import Indonesia from "@/assets/indonesia.png";
+import Facebook from "@/assets/facebook.png";
+import Instagram from "@/assets/ig.png";
+import Spotify from "@/assets/spotify.png";
+import Discord from "@/assets/discord.png";
+import Github from "@/assets/github.png";
+import Steam from "@/assets/steam.png";
+
+const itemList = ref([
+  {
+    title: "(+62)815 6393 6568",
+    img: Indonesia,
+  },
+  {
+    title: "Vik Per",
+    img: Facebook,
+  },
+  {
+    title: "vkrprmn",
+    img: Instagram,
+  },
+  {
+    title: "ordinaryboy",
+    img: Spotify,
+  },
+  {
+    title: ".ordinaryboy",
+    img: Discord,
+  },
+  {
+    title: "vikripermana21",
+    img: Github,
+  },
+  {
+    title: "imag1ne",
+    img: Steam,
+  },
+]);
 
 onMounted(() => {
   animate(
@@ -16,25 +55,26 @@ onMounted(() => {
   );
   animate(
     ".main-text",
-    { opacity: [0, 1], y: [100, 0] },
+    { opacity: [0, 1] },
     { duration: 1, easing: "ease-in-out" }
   );
   animate(
-    ".construct",
+    ".grid-container",
     { opacity: [0, 1] },
-    { duration: 1, delay: 1, easing: "ease-in-out" }
+    { duration: 1, delay: 1.5, easing: "ease-in-out" }
   );
   animate(
     ".cta",
     { opacity: [0, 1], y: [100, 0] },
     { delay: 1, duration: 0.5, easing: "ease-in-out" }
   );
+  animate(".highlight", { width: [0, 1] }, { delay: 1, easing: "ease-in-out" });
 });
 </script>
 
 <template>
   <div
-    class="h-screen w-screen overflow-hidden bg-[#FEB240] flex flex-col relative"
+    class="h-screen w-screen overflow-hidden bg-[#00BBF9] flex flex-col relative"
   >
     <div class="flex items-center p-12">
       <hr class="w-44 h-1 border-none bg-white" />
@@ -42,39 +82,30 @@ onMounted(() => {
     </div>
 
     <div class="flex w-full h-full items-center flex-col">
-      <img
-        src="../assets/noto_construction.png"
-        class="mt-32 construct"
-        alt=""
-      />
-      <p class="text-white text-5xl mt-24 description main-text">
-        SOME WORK IS UNDER MAINTENANCE / ON PROGRESS
-      </p>
+      <div class="relative">
+        <span
+          class="absolute h-4 w-10/12 bg-[#38e3cc] highlight bottom-0 -right-7"
+        ></span>
+        <p class="text-4xl main-text text-white z-30 relative uppercase">
+          vikripermana91@gmail.com
+        </p>
+      </div>
+      <div class="grid grid-cols-3 w-full mt-12 p-12 grid-container">
+        <template v-for="({ title, img }, key) in itemList" :key="key">
+          <div class="flex justify-center items-center">
+            <ContactItem :title="title" :image="img" :index="key" />
+          </div>
+        </template>
+      </div>
     </div>
 
     <div class="flex w-full justify-between p-12 absolute bottom-0 cta">
       <AnimatedButton
         type="back"
-        to="ABOUT ME"
-        link="/about"
-        class="text-[#FEB240]"
-      ></AnimatedButton>
-      <AnimatedButton
-        type="next"
-        to="CONTACTS"
-        link="/contacts"
-        class="text-[#FEB240]"
+        to="PROJECTS"
+        link="/projects"
+        class="text-[#00BBF9]"
       ></AnimatedButton>
     </div>
   </div>
 </template>
-
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>
