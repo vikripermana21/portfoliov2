@@ -1,71 +1,173 @@
 <script setup>
-import { timeline } from "motion";
-import { onMounted } from "vue";
+import { animate } from "motion";
+import { onMounted, ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+const hoverButton = ref("");
 
 onMounted(() => {
-  const homeAnimate = [".home", { y: [2000, 0] }, { duration: 0.3 }];
-  const infoAnimate = [
-    ".info",
-    { y: [-2000, 0] },
-    { duration: 0.3, at: "<", delay: 0.1 },
-  ];
-  const projectAnimate = [
-    ".project",
-    { y: [2000, 0] },
-    { duration: 0.3, at: "<", delay: 0.1 },
-  ];
-  const contactAnimate = [
-    ".contact",
-    { y: [-2000, 0] },
-    { duration: 0.3, at: "<", delay: 0.1 },
-  ];
-
-  timeline([homeAnimate, infoAnimate, projectAnimate, contactAnimate], {
-    direction: "alternate",
-    duration: 1,
-  });
+  animate(
+    "hr",
+    { opacity: [0, 1], x: [-100, 0] },
+    { easing: "ease-in-out", duration: 1 }
+  );
+  animate(
+    ".title-text",
+    { opacity: [0, 1], x: [100, 0] },
+    { duration: 1, easing: "ease-in-out" }
+  );
+  animate(
+    ".description",
+    { opacity: [0, 1], y: [100, 0] },
+    { duration: 1, easing: "ease-in-out" }
+  );
+  animate(
+    ".running-2",
+    { opacity: [0, 1], x: [1000, 0] },
+    { easing: "ease-in-out", duration: 1 }
+  );
+  animate(
+    ".running-1",
+    { opacity: [0, 1], x: [-1000, 0] },
+    { easing: "ease-in-out", duration: 1 }
+  );
+  animate(
+    ".cta",
+    { opacity: [0, 1], y: [100, 0] },
+    { delay: 1, duration: 0.5, easing: "ease-in-out" }
+  );
 });
+
+const animateIn = (name) => {
+  hoverButton.value = name;
+  animate(
+    `.span-${name}`,
+    {
+      height: "150%",
+      width: "200%",
+    },
+    {
+      width: { delay: 0.3 },
+    }
+  );
+  animate(`.text-${name}`, { opacity: [0, 1] }, { delay: 0.5, duration: 0.5 });
+};
+const animateOut = (name) => {
+  animate(
+    `.span-${name}`,
+    {
+      height: "100%",
+      width: "4px",
+    },
+    {
+      height: { delay: 0.3 },
+    }
+  );
+  animate(`.text-${name}`, { opacity: 0 }, { delay: 0.5, duration: 0.5 });
+  hoverButton.value = "";
+};
 </script>
 
 <template>
   <div
-    class="h-screen w-screen overflow-hidden bg-[#0649B5] flex justify-center items-center"
+    class="h-screen w-screen overflow-hidden bg-[#F15BB5] flex flex-col relative"
   >
-    <div
-      class="h-full flex-grow bg-[#9B5DE5] hover:w-96 w-0 transition-all flex justify-center items-center flex-col home"
-    >
-      <div
-        class="p-10 rounded-full flex justify-center items-center border-4 border-white"
-      >
-        <i class="pi pi-home text-7xl text-white"></i>
-      </div>
-      <!-- <p class="text-white text-2xl">HOME</p> -->
+    <div class="flex items-center p-12">
+      <hr class="w-44 h-1 border-none bg-white" />
+      <h1 class="text-white text-6xl ml-5 title-text">ABOUT ME</h1>
     </div>
-    <div
-      class="h-full flex-grow bg-[#F15BB5] hover:w-96 w-0 transition-all justify-center items-center flex-col flex info"
-    >
-      <div
-        class="p-10 rounded-full flex justify-center items-center border-4 border-white"
-      >
-        <i class="pi pi-info text-7xl text-white"></i>
-      </div>
+
+    <div class="px-12 pb-12">
+      <p class="text-white text-5xl mt-5 description">
+        Meet the unstoppable learner, Vikri Permana! This English-speaking
+        dynamo tackles challenges with unwavering grit, soaking up knowledge
+        like a sponge. When work's done, he flips the switch to gamer mode,
+        crushing opponents with strategic brilliance. But Vikri’s not all work
+        and play; he chills out with a soundtrack of diverse tunes, sometimes
+        even adding her own musical flair. A true force to be reckoned with,
+        Vikri proves that curiosity, dedication, and a killer playlist are the
+        perfect recipe for success.
+      </p>
     </div>
-    <div
-      class="h-full flex-grow bg-[#FEB240] hover:w-96 w-0 transition-all justify-center items-center flex-col flex project"
-    >
-      <div
-        class="p-10 rounded-full flex justify-center items-center border-4 border-white"
-      >
-        <i class="pi pi-list text-7xl text-white"></i>
+
+    <div class="flex flex-col mt-10">
+      <div class="relative flex overflow-hidden running-1">
+        <div class="animate-marqueeright whitespace-nowrap">
+          <span class="text-9xl text-white font-bold mx-4">HTML</span>
+          <span class="text-9xl text-white font-bold mx-4">CSS</span>
+          <span class="text-9xl text-white font-bold mx-4">JAVASCRIPT</span>
+          <span class="text-9xl text-white font-bold mx-4">C++</span>
+          <span class="text-9xl text-white font-bold mx-4">TYPESCRIPT</span>
+        </div>
+
+        <div class="absolute top-0 animate-marquee2right whitespace-nowrap">
+          <span class="text-9xl text-white font-bold mx-4">HTML</span>
+          <span class="text-9xl text-white font-bold mx-4">CSS</span>
+          <span class="text-9xl text-white font-bold mx-4">JAVASCRIPT</span>
+          <span class="text-9xl text-white font-bold mx-4">C++</span>
+          <span class="text-9xl text-white font-bold mx-4">TYPESCRIPT</span>
+        </div>
       </div>
-    </div>
-    <div
-      class="h-full flex-grow bg-[#00BBF9] hover:w-96 w-0 transition-all justify-center items-center flex-col flex contact"
-    >
-      <div
-        class="p-10 rounded-full flex justify-center items-center border-4 border-white"
-      >
-        <i class="pi pi-phone text-7xl text-white"></i>
+      <div class="relative flex overflow-hidden mt-5 running-2">
+        <div class="animate-marqueeleft whitespace-nowrap">
+          <span class="text-9xl text-white font-bold mx-4">NEXT</span>
+          <span class="text-9xl text-white font-bold mx-4">REACT</span>
+          <span class="text-9xl text-white font-bold mx-4">VUE</span>
+          <span class="text-9xl text-white font-bold mx-4">ANGULAR</span>
+          <span class="text-9xl text-white font-bold mx-4">FIGMA</span>
+          <span class="text-9xl text-white font-bold mx-4">LARAVEL</span>
+          <span class="text-9xl text-white font-bold mx-4">TAILWIND</span>
+          <span class="text-9xl text-white font-bold mx-4">MOTION ONE</span>
+        </div>
+
+        <div class="absolute top-0 animate-marquee2left whitespace-nowrap">
+          <span class="text-9xl text-white font-bold mx-4">NEXT</span>
+          <span class="text-9xl text-white font-bold mx-4">REACT</span>
+          <span class="text-9xl text-white font-bold mx-4">VUE</span>
+          <span class="text-9xl text-white font-bold mx-4">ANGULAR</span>
+          <span class="text-9xl text-white font-bold mx-4">FIGMA</span>
+          <span class="text-9xl text-white font-bold mx-4">LARAVEL</span>
+          <span class="text-9xl text-white font-bold mx-4">TAILWIND</span>
+          <span class="text-9xl text-white font-bold mx-4">MOTION ONE</span>
+        </div>
+      </div>
+      <div class="flex w-full justify-between p-12 absolute bottom-0 cta">
+        <div
+          class="flex items-center cursor-pointer relative"
+          @mouseenter="animateIn('back')"
+          @mouseleave="animateOut('back')"
+          @click="router.push('/main-menu')"
+        >
+          <div
+            class="w-1 border-none bg-white h-full absolute flex justify-center span-back items-center"
+          >
+            <p
+              class="text-back text-[#F15BB5] text-3xl"
+              v-show="hoverButton == 'back'"
+            >
+              MAIN MENU
+            </p>
+          </div>
+          <p class="text-white text-3xl ml-5">BACK</p>
+        </div>
+        <div
+          class="flex items-center cursor-pointer relative"
+          @mouseenter="animateIn('next')"
+          @mouseleave="animateOut('next')"
+        >
+          <div
+            class="w-1 border-none bg-white h-full absolute flex justify-center span-next items-center right-0"
+          >
+            <p
+              class="text-next text-[#F15BB5] text-3xl"
+              v-show="hoverButton == 'next'"
+            >
+              PROJECTS
+            </p>
+          </div>
+          <p class="text-white text-3xl mr-5">NEXT</p>
+        </div>
       </div>
     </div>
   </div>

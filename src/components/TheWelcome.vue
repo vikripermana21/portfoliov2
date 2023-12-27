@@ -28,7 +28,7 @@ onkeydown = (e) => {
       { duration: 0.3, repeat: Infinity, easing: "ease-in-out" }
     );
     setTimeout(() => {
-      router.push("/about");
+      router.push("/main-menu");
     }, 1000);
   }
 };
