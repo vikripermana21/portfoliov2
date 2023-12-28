@@ -45,18 +45,6 @@ onclick = () => {
     router.push("/main-menu");
   }, 1000);
 };
-
-ontouchstart = () => {
-  animate(".space", { y: 0 }, { duration: 0.1 });
-  animate(
-    ".space",
-    { opacity: [0, 1, 0], scale: 1.1 },
-    { duration: 0.3, repeat: Infinity, easing: "ease-in-out" }
-  );
-  setTimeout(() => {
-    router.push("/main-menu");
-  }, 1000);
-};
 </script>
 
 <template>
