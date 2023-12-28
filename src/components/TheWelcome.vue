@@ -34,7 +34,7 @@ onkeydown = (e) => {
   }
 };
 
-onclick = () => {
+const letsExplore = () => {
   animate(".space", { y: 0 }, { duration: 0.1 });
   animate(
     ".space",
@@ -63,9 +63,12 @@ onclick = () => {
       </p>
     </Motion>
   </Presence>
-  <p class="text-white space text-md lg:text-xl">
-    Press Space / Tap to Explore
-  </p>
+  <div class="w-full p-12 flex justify-center">
+    <p class="text-white space text-md lg:text-xl">
+      Press Space / Tap to Explore
+    </p>
+  </div>
+  <div @click="letsExplore" class="absolute h-full w-full bg-transparent"></div>
 </template>
 
 <style scoped>

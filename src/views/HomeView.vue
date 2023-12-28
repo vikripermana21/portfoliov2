@@ -2,10 +2,6 @@
 import { Presence, Motion } from "motion/vue";
 import { ref } from "vue";
 import TheWelcome from "../components/TheWelcome.vue";
-import { animate } from "motion";
-import { useRouter } from "vue-router";
-
-const router = useRouter();
 
 const text = ref("<p>Hi &#x1F44B</p>");
 const textShow = ref(true);
@@ -31,23 +27,10 @@ setTimeout(() => {
 setTimeout(() => {
   textFinished.value = true;
 }, 10000);
-
-const touchEvent = () => {
-  animate(".space", { y: 0 }, { duration: 0.1 });
-  animate(
-    ".space",
-    { opacity: [0, 1, 0], scale: 1.1 },
-    { duration: 0.3, repeat: Infinity, easing: "ease-in-out" }
-  );
-  setTimeout(() => {
-    router.push("/main-menu");
-  }, 1000);
-};
 </script>
 
 <template>
   <div
-    @touchstart="touchEvent"
     class="h-screen w-screen overflow-hidden bg-[#0649B5] flex justify-center items-center flex-col"
   >
     <Presence :exit-before-enter="true">
