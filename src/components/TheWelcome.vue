@@ -32,6 +32,18 @@ onkeydown = (e) => {
     }, 1000);
   }
 };
+
+onclick = () => {
+  animate(".space", { y: 0 }, { duration: 0.1 });
+  animate(
+    ".space",
+    { opacity: [0, 1, 0], scale: 1.1 },
+    { duration: 0.3, repeat: Infinity, easing: "ease-in-out" }
+  );
+  setTimeout(() => {
+    router.push("/main-menu");
+  }, 1000);
+};
 </script>
 
 <template>
@@ -43,14 +55,16 @@ onkeydown = (e) => {
       :transition="{ duration: 1 }"
     >
       <p
-        class="text-[10rem] main-text leading-none my-5 text-center bg-clip-text text-transparent bg-gradient-to-br from-[#9B5DE5] to-[#FEB240]"
+        class="text-7xl lg:text-[10rem] main-text leading-none my-5 text-center bg-clip-text text-transparent bg-gradient-to-br from-[#9B5DE5] to-[#FEB240]"
       >
         VIKRI <br />
         PERMANA
       </p>
     </Motion>
   </Presence>
-  <p class="text-white space text-xl">Press Space to Explore</p>
+  <p class="text-white space text-md lg:text-xl">
+    Press Space / Click to Explore
+  </p>
 </template>
 
 <style scoped>

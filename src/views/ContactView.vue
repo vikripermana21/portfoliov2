@@ -74,23 +74,27 @@ onMounted(() => {
 
 <template>
   <div
-    class="h-screen w-screen overflow-hidden bg-[#00BBF9] flex flex-col relative"
+    class="min-h-screen min-w-screen overflow-hidden bg-[#00BBF9] flex flex-col relative"
   >
-    <div class="flex items-center p-12">
-      <hr class="w-44 h-1 border-none bg-white" />
+    <div class="flex items-center justify-center md:justify-start p-12">
+      <hr class="w-44 h-1 border-none bg-white hidden lg:inline-block" />
       <h1 class="text-white text-6xl ml-5 title-text">CONTACTS</h1>
     </div>
 
     <div class="flex w-full h-full items-center flex-col">
       <div class="relative">
         <span
-          class="absolute h-4 w-10/12 bg-[#38e3cc] highlight bottom-0 -right-7"
+          class="absolute h-3 lg:h-4 w-10/12 bg-[#38e3cc] highlight bottom-0 -right-7"
         ></span>
-        <p class="text-4xl main-text text-white z-30 relative uppercase">
+        <p
+          class="text-xl md:text-2xl lg:text-4xl main-text text-white z-30 relative uppercase"
+        >
           vikripermana91@gmail.com
         </p>
       </div>
-      <div class="grid grid-cols-3 w-full mt-12 p-12 grid-container">
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full mb-16 p-5 lg:p-12 grid-container"
+      >
         <template v-for="({ title, img }, key) in itemList" :key="key">
           <div class="flex justify-center items-center">
             <ContactItem :title="title" :image="img" :index="key" />
@@ -99,11 +103,17 @@ onMounted(() => {
       </div>
     </div>
 
-    <div class="flex w-full justify-between p-12 absolute bottom-0 cta">
+    <div class="flex w-full p-5 justify-between md:p-12 absolute bottom-0 cta">
       <AnimatedButton
         type="back"
         to="PROJECTS"
         link="/projects"
+        class="text-[#00BBF9]"
+      ></AnimatedButton>
+      <AnimatedButton
+        type="next"
+        to="MAIN MENU"
+        link="/main-menu"
         class="text-[#00BBF9]"
       ></AnimatedButton>
     </div>

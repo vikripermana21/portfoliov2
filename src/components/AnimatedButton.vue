@@ -50,14 +50,14 @@ const animateOut = (name) => {
       class="w-1 border-none bg-white h-full absolute flex justify-center span-back items-center"
     >
       <p
-        class="text-back text-3xl"
+        class="text-back text-xl lg:text-3xl"
         :class="$attrs.class"
         v-show="hoverButton == 'back'"
       >
         {{ to }}
       </p>
     </div>
-    <p class="text-white text-3xl ml-5">BACK</p>
+    <p class="text-white text-xl lg:text-3xl ml-5">BACK</p>
   </div>
   <div
     v-if="type === 'next'"
@@ -70,13 +70,13 @@ const animateOut = (name) => {
       class="w-1 border-none bg-white h-full absolute flex justify-center span-next items-center right-0"
     >
       <p
-        class="text-next text-3xl"
+        class="text-next text-xl lg:text-3xl"
         :class="$attrs.class"
         v-show="hoverButton == 'next'"
       >
         {{ to }}
       </p>
     </div>
-    <p class="text-white text-3xl mr-5">NEXT</p>
+    <p class="text-white text-xl lg:text-3xl mr-5">NEXT</p>
   </div>
 </template>

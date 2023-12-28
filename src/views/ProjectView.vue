@@ -36,8 +36,8 @@ onMounted(() => {
   <div
     class="h-screen w-screen overflow-hidden bg-[#FEB240] flex flex-col relative"
   >
-    <div class="flex items-center p-12">
-      <hr class="w-44 h-1 border-none bg-white" />
+    <div class="flex items-center justify-center md:justify-start p-12">
+      <hr class="w-44 h-1 border-none bg-white hidden lg:inline-block" />
       <h1 class="text-white text-6xl ml-5 title-text">PROJECTS</h1>
     </div>
 
@@ -47,12 +47,14 @@ onMounted(() => {
         class="mt-32 construct"
         alt=""
       />
-      <p class="text-white text-5xl mt-24 description main-text">
+      <p
+        class="text-white text-2xl text-center lg:text-5xl mt-24 description main-text px-5"
+      >
         SOME WORK IS UNDER MAINTENANCE / ON PROGRESS
       </p>
     </div>
 
-    <div class="flex w-full justify-between p-12 absolute bottom-0 cta">
+    <div class="flex w-full justify-between p-5 md:p-12 absolute bottom-0 cta">
       <AnimatedButton
         type="back"
         to="ABOUT ME"

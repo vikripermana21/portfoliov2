@@ -31,7 +31,7 @@ setTimeout(() => {
 
 <template>
   <div
-    class="h-screen w-screen bg-[#0649B5] flex justify-center items-center flex-col"
+    class="h-screen w-screen overflow-hidden bg-[#0649B5] flex justify-center items-center flex-col"
   >
     <Presence :exit-before-enter="true">
       <Motion
@@ -42,7 +42,7 @@ setTimeout(() => {
         :transition="{ duration: 1 }"
         class="box text-white text-3xl"
       >
-        <p v-html="text"></p>
+        <p v-html="text" class="text-center"></p>
       </Motion>
     </Presence>
 
