@@ -7,27 +7,51 @@ const router = useRouter();
 const clickedTab = ref("");
 
 onMounted(() => {
-  const homeAnimate = [".home", { y: [2000, 0] }, { duration: 0.3 }];
-  const infoAnimate = [
-    ".info",
-    { y: [-2000, 0] },
-    { duration: 0.3, at: "<", delay: 0.1 },
-  ];
-  const projectAnimate = [
-    ".project",
-    { y: [2000, 0] },
-    { duration: 0.3, at: "<", delay: 0.1 },
-  ];
-  const contactAnimate = [
-    ".contact",
-    { y: [-2000, 0] },
-    { duration: 0.3, at: "<", delay: 0.1 },
-  ];
+  if (window.innerWidth < 1020) {
+    const homeAnimate = [".home", { x: [2000, 0] }, { duration: 0.3 }];
+    const infoAnimate = [
+      ".info",
+      { x: [-2000, 0] },
+      { duration: 0.3, at: "<", delay: 0.1 },
+    ];
+    const projectAnimate = [
+      ".project",
+      { x: [2000, 0] },
+      { duration: 0.3, at: "<", delay: 0.1 },
+    ];
+    const contactAnimate = [
+      ".contact",
+      { x: [-2000, 0] },
+      { duration: 0.3, at: "<", delay: 0.1 },
+    ];
 
-  timeline([homeAnimate, infoAnimate, projectAnimate, contactAnimate], {
-    direction: "alternate",
-    duration: 1,
-  });
+    timeline([homeAnimate, infoAnimate, projectAnimate, contactAnimate], {
+      direction: "alternate",
+      duration: 1,
+    });
+  } else {
+    const homeAnimate = [".home", { y: [2000, 0] }, { duration: 0.3 }];
+    const infoAnimate = [
+      ".info",
+      { y: [-2000, 0] },
+      { duration: 0.3, at: "<", delay: 0.1 },
+    ];
+    const projectAnimate = [
+      ".project",
+      { y: [2000, 0] },
+      { duration: 0.3, at: "<", delay: 0.1 },
+    ];
+    const contactAnimate = [
+      ".contact",
+      { y: [-2000, 0] },
+      { duration: 0.3, at: "<", delay: 0.1 },
+    ];
+
+    timeline([homeAnimate, infoAnimate, projectAnimate, contactAnimate], {
+      direction: "alternate",
+      duration: 1,
+    });
+  }
 });
 
 const animateIn = (name) => {

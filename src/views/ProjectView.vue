@@ -41,14 +41,14 @@ onMounted(() => {
       <h1 class="text-white text-6xl ml-5 title-text">PROJECTS</h1>
     </div>
 
-    <div class="flex w-full h-full items-center flex-col">
+    <div class="flex w-full h-3/5 items-center justify-center flex-col">
       <img
         src="../assets/noto_construction.png"
-        class="mt-32 construct"
+        class="construct w-40 lg:w-[16rem]"
         alt=""
       />
       <p
-        class="text-white text-2xl text-center lg:text-5xl mt-24 description main-text px-5"
+        class="text-white text-xl text-center lg:text-5xl mt-10 lg:mt-24 description main-text px-5"
       >
         SOME WORK IS UNDER MAINTENANCE / ON PROGRESS
       </p>
