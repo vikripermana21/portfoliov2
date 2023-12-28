@@ -1,3 +1,4 @@
+<!-- eslint-disable no-undef -->
 <script setup>
 import { animate } from "motion";
 import { Motion, Presence } from "motion/vue";
@@ -44,6 +45,18 @@ onclick = () => {
     router.push("/main-menu");
   }, 1000);
 };
+
+ontouchstart = () => {
+  animate(".space", { y: 0 }, { duration: 0.1 });
+  animate(
+    ".space",
+    { opacity: [0, 1, 0], scale: 1.1 },
+    { duration: 0.3, repeat: Infinity, easing: "ease-in-out" }
+  );
+  setTimeout(() => {
+    router.push("/main-menu");
+  }, 1000);
+};
 </script>
 
 <template>
@@ -63,7 +76,7 @@ onclick = () => {
     </Motion>
   </Presence>
   <p class="text-white space text-md lg:text-xl">
-    Press Space / Click to Explore
+    Press Space / Tap to Explore
   </p>
 </template>
 
